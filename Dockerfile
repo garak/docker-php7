@@ -4,7 +4,6 @@ MAINTAINER Massimiliano Arione <garakkio@gmail.com>
 
 # Set correct environment variables
 ENV HOME /root
-ENV COMPOSER_HOME /root/composer
 ENV LANG it_IT.UTF-8
 ENV LC_ALL it_IT.UTF-8
 
