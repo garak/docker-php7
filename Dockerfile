@@ -43,13 +43,13 @@ RUN bash -c 'debconf-set-selections <<< "mysql-server-5.7 mysql-server/root_pass
         
 # PHP Extensions
 RUN DEBIAN_FRONTEND=noninteractive apt-get update && \
-    apt-get install -y -qq php7.1-mcrypt php7.1-zip php7.1-xml php7.1-mbstring php7.1-curl php7.1-json php7.1-mysql php7.1-tokenizer php7.1-cli
+    apt-get install -y -qq php7.2-mcrypt php7.2-zip php7.2-xml php7.2-mbstring php7.2-curl php7.2-json php7.2-mysql php7.2-tokenizer php7.2-cli
 
 # Libraries needed for wkhtmltopdf
 RUN DEBIAN_FRONTEND=noninteractive apt-get install -y -qq libxext6 libxrender1 libfontconfig1
 
 # Time Zone
-RUN echo "date.timezone=Europe/Rome" > /etc/php/7.1/cli/conf.d/date_timezone.ini
+RUN echo "date.timezone=Europe/Rome" > /etc/php/7.2/cli/conf.d/date_timezone.ini
 
 VOLUME /root/composer
 
