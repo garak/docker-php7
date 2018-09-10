@@ -1,4 +1,4 @@
-FROM ubuntu:16.04
+FROM ubuntu:18.04
 
 MAINTAINER Massimiliano Arione <garakkio@gmail.com>
 
@@ -16,7 +16,7 @@ RUN \
     apt-get update && apt-get install -y locales --no-install-recommends && locale-gen it_IT.UTF-8
 
 RUN \
-    apt-get update && apt-get install -y software-properties-common && add-apt-repository -y -u ppa:ondrej/php && \
+    apt-get update && apt-get install -y software-properties-common && \
     apt-get update && apt-get install -y \
     curl \
     git \
