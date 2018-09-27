@@ -7,9 +7,6 @@ ENV HOME /root
 ENV LANG it_IT.UTF-8
 ENV LC_ALL it_IT.UTF-8
 
-# MYSQL ROOT PASSWORD
-ARG MYSQL_ROOT_PASS=root
-
 ARG DEBIAN_FRONTEND=noninteractive
 
 RUN \
@@ -36,12 +33,6 @@ RUN mkdir -p /usr/local/openssl/include/openssl/ && \
     ln -s /usr/lib/x86_64-linux-gnu/libssl.a /usr/local/openssl/lib/libssl.a && \
     ln -s /usr/lib/x86_64-linux-gnu/libssl.so /usr/local/openssl/lib/
 
-# MYSQL
-RUN bash -c 'debconf-set-selections <<< "mysql-server-5.7 mysql-server/root_password password $MYSQL_ROOT_PASS"' && \
-        bash -c 'debconf-set-selections <<< "mysql-server-5.7 mysql-server/root_password_again password $MYSQL_ROOT_PASS"' && \
-        DEBIAN_FRONTEND=noninteractive apt-get update && \
-        DEBIAN_FRONTEND=noninteractive apt-get install -qqy mysql-server-5.7
-        
 # PHP Extensions
 RUN DEBIAN_FRONTEND=noninteractive apt-get update && \
     apt-get install -y -qq php7.2-zip php7.2-xml php7.2-mbstring php7.2-curl php7.2-json php7.2-mysql php7.2-tokenizer php7.2-cli php7.2-intl
@@ -61,6 +52,6 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
 WORKDIR /tmp
 
 RUN apt-get clean -y && \
-        apt-get autoremove -y && \
-        rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+    apt-get autoremove -y && \
+    rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
