@@ -40,6 +40,9 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get update && \
 # Libraries needed for wkhtmltopdf
 RUN DEBIAN_FRONTEND=noninteractive apt-get install -y -qq libxext6 libxrender1 libfontconfig1
 
+# capifony
+RUN DEBIAN_FRONTEND=noninteractive apt-get install -y -qq ruby && gem install capifony 
+
 # Time Zone
 RUN echo "date.timezone=Europe/Rome" > /etc/php/7.2/cli/conf.d/date_timezone.ini
 
