@@ -23,6 +23,7 @@ RUN \
     openssl \
     ssh \
     locales \
+    libonig-dev \
     --no-install-recommends && rm -r /var/lib/apt/lists/* \
     && apt-get --purge autoremove -y
 
@@ -35,7 +36,7 @@ RUN mkdir -p /usr/local/openssl/include/openssl/ && \
 
 # PHP Extensions
 RUN DEBIAN_FRONTEND=noninteractive apt-get update && \
-    apt-get install -y -qq --no-install-recommends php7.2-zip php7.2-xml php7.2-mbstring php7.2-curl php7.2-json php7.2-mysql php7.2-tokenizer php7.2-cli php7.2-intl
+    apt-get install -y -qq --no-install-recommends php7.4-zip php7.4-xml php7.4-mbstring php7.4-curl php7.4-json php7.4-mysql php7.4-tokenizer php7.4-cli php7.4-intl
 
 # Libraries needed for wkhtmltopdf
 RUN DEBIAN_FRONTEND=noninteractive apt-get install -y -qq --no-install-recommends libxext6 libxrender1 libfontconfig1
