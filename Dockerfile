@@ -47,7 +47,7 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get install -y -qq --no-install-recommend
 RUN DEBIAN_FRONTEND=noninteractive apt-get install -y -qq --no-install-recommends ruby && gem install capifony 
 
 # Time Zone
-RUN echo "date.timezone=Europe/Rome" > /etc/php/7.2/cli/conf.d/date_timezone.ini
+RUN echo "date.timezone=Europe/Rome" > /etc/php/7.4/cli/conf.d/date_timezone.ini
 
 VOLUME /root/composer
 
