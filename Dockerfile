@@ -34,15 +34,18 @@ RUN mkdir -p /usr/local/openssl/include/openssl/ && \
     ln -s /usr/lib/x86_64-linux-gnu/libssl.a /usr/local/openssl/lib/libssl.a && \
     ln -s /usr/lib/x86_64-linux-gnu/libssl.so /usr/local/openssl/lib/
 
+# repo
+RUN add-apt-repository ppa:ondrej/php -y 
+
 # PHP Extensions
 RUN DEBIAN_FRONTEND=noninteractive apt-get update && \
-    apt-get install -y -qq --no-install-recommends php7.4-zip php7.4-xml php7.4-mbstring php7.4-curl php7.4-json php7.4-mysql php7.4-tokenizer php7.4-cli php7.4-intl
+    apt-get install -y -qq --no-install-recommends php8.0-zip php8.0-xml php8.0-mbstring php8.0-curl php8.0-json php8.0-mysql php8.0-tokenizer php8.0-cli php8.0-intl
 
 # Libraries needed for wkhtmltopdf
 RUN DEBIAN_FRONTEND=noninteractive apt-get install -y -qq --no-install-recommends libxext6 libxrender1 libfontconfig1 libjpeg62
 
 # Time Zone
-RUN echo "date.timezone=Europe/Rome" > /etc/php/7.4/cli/conf.d/date_timezone.ini
+RUN echo "date.timezone=Europe/Rome" > /etc/php/8.0/cli/conf.d/date_timezone.ini
 
 VOLUME /root/composer
 
