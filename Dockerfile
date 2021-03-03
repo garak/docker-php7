@@ -39,7 +39,7 @@ RUN add-apt-repository ppa:ondrej/php -y
 
 # PHP Extensions
 RUN DEBIAN_FRONTEND=noninteractive apt-get update && \
-    apt-get install -y -qq --no-install-recommends php8.0-zip php8.0-xml php8.0-mbstring php8.0-curl php8.0-json php8.0-mysql php8.0-tokenizer php8.0-cli php8.0-intl
+    apt-get install -y -qq --no-install-recommends php8.0-zip php8.0-xml php8.0-mbstring php8.0-curl php8.0-mysql php8.0-tokenizer php8.0-cli php8.0-intl
 
 # Libraries needed for wkhtmltopdf
 RUN DEBIAN_FRONTEND=noninteractive apt-get install -y -qq --no-install-recommends libxext6 libxrender1 libfontconfig1 libjpeg62
