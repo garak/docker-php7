@@ -1,3 +1,4 @@
+FROM composer:2 AS composer
 FROM ubuntu:20.04
 
 MAINTAINER Massimiliano Arione <garakkio@gmail.com>
@@ -50,7 +51,7 @@ RUN echo "date.timezone=Europe/Rome" > /etc/php/8.0/cli/conf.d/date_timezone.ini
 VOLUME /root/composer
 
 # Install Composer
-RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+COPY --from=composer /usr/bin/composer /usr/local/bin/composer
 
 # Goto temporary directory.
 WORKDIR /tmp
