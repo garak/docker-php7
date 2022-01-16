@@ -38,7 +38,7 @@ jobs:
                     context: ${{ inputs.folder }}
                     tags: |
                         garak/docker-php7:${{ inputs.tagversion }}
-                    push: ${{ github.ref == 'refs/heads/main' }}
+                    push: ${{ github.ref == 'refs/heads/7.4' }}
 
             -   name: Image digest
                 run: echo ${{ steps.docker_build.outputs.digest }}
