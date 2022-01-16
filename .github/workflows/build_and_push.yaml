@@ -1,12 +1,9 @@
 name: Build and push docker image
 
 on:
-    workflow_call:
+    workflow_dispatch:
         inputs:
             tagversion:
-                required: true
-                type: string
-            folder:
                 required: true
                 type: string
         secrets:
@@ -35,7 +32,7 @@ jobs:
             -   name: Build and push Docker images
                 uses: docker/build-push-action@v2.7.0
                 with:
-                    context: ${{ inputs.folder }}
+                    context: ./
                     tags: |
                         garak/docker-php7:${{ inputs.tagversion }}
                     push: ${{ github.ref == 'refs/heads/7.4' }}
