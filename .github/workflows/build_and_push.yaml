@@ -35,7 +35,7 @@ jobs:
             -   name: Build and push Docker images
                 uses: docker/build-push-action@v2.7.0
                 with:
-                    context: ${{ inputs.folder }}
+                    context: ./
                     tags: |
                         garak/docker-php7:${{ inputs.tagversion }}
                     push: ${{ github.ref == 'refs/heads/8.0' }}
